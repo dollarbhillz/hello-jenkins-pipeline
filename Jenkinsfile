@@ -9,5 +9,5 @@ node {
 
     stage 'Teardown/Idle Slaves'
     sh "echo 'This is the step where the jobs will be checked for complettion.'"
-    build 'Teardown or Idle Slaves'
+    build 'Tear Down or Idle Slaves'
 }
