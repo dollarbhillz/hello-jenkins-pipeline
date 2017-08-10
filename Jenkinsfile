@@ -4,7 +4,7 @@ node {
     stage ('Provision Slaves') {
         sh "echo 'This is the step where the slaves will be provisioned.'"
         build 'Provision Slaves'
-        sh "yum install -y atomic-origin-clients"
+        sh "su -c 'yum install -y atomic-origin-clients'"
     }
 
     stage ('Run Jobs') {
