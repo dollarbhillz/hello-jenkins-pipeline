@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  name: sample-pipeline
+  labels:
+    name: sample-pipeline
+spec:
+  strategy:
+    type: JenkinsPipeline
+    jenkinsPipelineStrategy:
+      jenkinsfile: |-
+        node {
+          stage("echo") {
+            println("Hello World")
+          }
+        }
