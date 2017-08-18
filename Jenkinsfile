@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-node {
+node ("jenkins-slave") {
 
     stage ('Provision Slaves') {
         sh "echo 'This is the step where the slaves will be provisioned.'"
