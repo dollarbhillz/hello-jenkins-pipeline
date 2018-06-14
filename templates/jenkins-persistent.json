@@ -161,9 +161,7 @@
                 ],
                 "resources": {
                   "limits": {
-                    "memory": "${MEMORY_LIMIT}"
-                  },
-                  {
+                    "memory": "${MEMORY_LIMIT}",
                     "cpu":    "${CPU_LIMIT}"
                   }
                 },
@@ -297,7 +295,7 @@
       "name":  "CPU_LIMIT",
       "displayName":  "CPU Limit",
       "description":  "Maximum amount of cpu cores the container can use." ,
-      "value":  2
+      "value":  "2"
     },
     {
       "name": "MEMORY_LIMIT",

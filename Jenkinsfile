@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 pipeline {
-    agent('jenkins-slave')
+    agent any
     stages {
         stage ('Run Jobs, first batch') {
             sh "echo 'This is the step where X number of jobs will run concurrently, first batch.'"
