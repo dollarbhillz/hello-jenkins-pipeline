@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'jenkins-slave' }
+    agent { node { label 'jenkins-slave' } }
     stages {
         stage ('Install dependencies') {
             steps {
@@ -20,6 +20,7 @@ pipeline {
             steps {
                 sh "echo 'Run pip --version'"
                 sh "pip --version"
+                sh "echo 'Dev branch'"
             }
         }
     }
