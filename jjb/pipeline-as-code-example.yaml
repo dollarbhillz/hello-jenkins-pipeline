@@ -1,41 +1,19 @@
 - scm:
     name: project-scm
     scm:
-      - hg:
-         url: http://hg.example.org/project
+      - git:
+         url: https://github.com/dollarbhillz/hello-jenkins-pipeline.git
          clean: true
 
 - job-template:
-    name: '{name}-unit-tests'
+    name: '{name}-dev'
     project-type: pipeline
     pipeline-scm:
       scm:
         - project-scm
     sandbox: true
-    publishers:
-    - email:
-        recipients: '{mail-to}'
-
-- job-template:
-    name: '{name}-perf-tests'
-    project-type: pipeline
-    pipeline-scm:
-      scm:
-        - project-scm
-    sandbox: false
-    publishers:
-    - email:
-        recipients: '{mail-to}'
-
-- job-group:
-    name: '{name}-tests'
-    jobs:
-      - '{name}-unit-tests':
-          mail-to: dev@example.org
-      - '{name}-perf-tests':
-          mail-to: qa@example.org
 
 - project:
-    name: project-name
+    name: pipeline-test
     jobs:
-    - '{name}-tests'
+    - '{name}-dev'

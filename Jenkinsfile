@@ -1,26 +1,23 @@
 #!/usr/bin/env groovy
-node ("jenkins-slave") {
 
-    stage ('Provision Slaves') {
-        sh "echo 'This is the step where the slaves will be provisioned.'"
-        build 'Provision Slaves'
+pipeline {
+    node('jenkins-slave') {
+        stages {
+
+            stage ('Run Jobs, first batch') {
+                sh "echo 'This is the step where X number of jobs will run concurrently, first batch.'"
+                // Do jobs in parallel
+                parallel firstBranch: {
+                    sh "echo 'Hello World! First'"
+                }, secondBranch: {
+                    sh "echo 'Hello World! Second'"
+                },
+                failFast: false // Don't terminate all branches upon the failure in
+            }                   // any other branch
+
+            stage ('Run Jobs, second batch') {
+                sh "echo 'This is where the second batch will run.'"
+            }
+        }
     }
-
-    stage ('Run Jobs') {
-        sh "echo 'This is the step where X number of jobs will run concurrently.'"
-        // Do jobs in parallel
-        parallel firstBranch: {
-            build 'Hello World'
-        }, secondBranch: {
-            build 'Hello World'
-        },
-        failFast: false // Don't terminate all branches upon the failure in
-    }                   // any other branch
-
-    stage ('Teardown/Idle Slaves') {
-        sh "echo 'This is the step where the jobs will be checked for complettion.'"
-        build 'Tear Down or Idle Slaves'
-    }
-
 }
-
