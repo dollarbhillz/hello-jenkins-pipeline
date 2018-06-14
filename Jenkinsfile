@@ -1,10 +1,12 @@
+#!/bin/env groovy
+
 pipeline {
     agent { node { label 'jenkins-slave' } }
     stages {
         stage ('Install dependencies') {
             steps {
                 sh "echo 'Install necessary packages'"
-                sh "yum install -y python-pip"
+                sh "yum repolist > /dev/null && yum install -y python-setuptools python-psutil python-flask python-pip"
                 // Do jobs in parallel
                 //parallel firstBranch: {
                //    sh "echo 'Hello World! First'"
