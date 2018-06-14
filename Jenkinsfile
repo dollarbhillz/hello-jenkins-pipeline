@@ -1,5 +1,5 @@
 pipeline {
-    agent { node { label 'jenkins-slave' } }
+    agent { label 'jenkins-slave' }
     stages {
         stage ('Install dependencies') {
             steps {
