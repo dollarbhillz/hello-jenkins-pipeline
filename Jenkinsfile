@@ -17,8 +17,10 @@ pipeline {
         }
 
         stage ('Run Job') {
-            sh "echo 'Run pip --version'"
-            sh "pip --version"
+            steps {
+                sh "echo 'Run pip --version'"
+                sh "pip --version"
+            }
         }
     }
 }
